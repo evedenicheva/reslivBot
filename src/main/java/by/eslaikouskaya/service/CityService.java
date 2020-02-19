@@ -29,12 +29,8 @@ public class CityService {
 				city -> {
 					CityDto dto = new CityDto(city.getId(),
 							city.getName());
-					if (cityDtos.size() < maxCount){
-						cityDtos.add(dto);
-					}
-
-				}
-		);
+					if (cityDtos.size() < maxCount){ cityDtos.add(dto); }
+				});
 		return cityDtos;
 	}
 
@@ -66,18 +62,15 @@ public class CityService {
 				info -> {
 					AdditionalInfoDto dto = new AdditionalInfoDto(info.getId(),
 							info.getCityId(), info.getInfo());
-					if (infoDtos.size() < maxCount){
-						infoDtos.add(dto);
-					}
-
-				}
-		);
+					if (infoDtos.size() < maxCount){ infoDtos.add(dto); }
+				});
 		return infoDtos;
 	}
 
 	public AdditionalInfoDto getInfoById(int infoId) {
 		AdditionalInfo info = infoRepository.findById((long)infoId).orElseThrow();
-		return new AdditionalInfoDto(info.getId(), info.getCityId(), info.getInfo());
+		return new AdditionalInfoDto(info.getId(),
+				info.getCityId(), info.getInfo());
 	}
 
 	public void createNewInfo(AdditionalInfoCmd newInfoCmd) {

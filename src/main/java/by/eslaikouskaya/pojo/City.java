@@ -5,8 +5,8 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
-@Entity(name = "City")
 @Data
+@Entity(name = "City")
 @NoArgsConstructor
 public class City {
 
